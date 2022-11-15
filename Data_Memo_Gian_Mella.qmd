@@ -1,0 +1,36 @@
+---
+title: "Gian Mella Data Memo"
+subtitle: "Final Project (302)" 
+author: "Gian Mella"
+date: October 28, 2022
+format:
+  html:
+    toc: true
+    embed-resources: true
+    code-fold: show
+    link-external-newwindow: true
+    fig-dpi: 300
+execute:
+  warning: false
+from: markdown+emoji 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Data Source
+
+My primary data source will be from Stathead: [https://stathead.com/tiny/hXqZ6](https://stathead.com/tiny/hXqZ6).
+
+This dataset lists every NBA player who played over 10 minutes per game in last year's playoffs (2021-22 NBA season), sorted by descending win shares. This table shows a wide variety of data for each player, such as per game stats, shooting percentages, and some advanced statistics as well. There are 152 players in the dataset. Additionally, I might bring in other data that includes similar stats but with the player list more filtered. I plan on exporting the table as a CSV file and will load it into RStudio. 
+
+## Why This Data
+
+I chose this data mostly because I'm a big fan of basketball and also of Jimmy Butler. Butler had a great playoff run last year, and as a fan of his I wanted to use visualizations to see just how good he was last year. Hopefully I can prove that he was the best player in last year's playoffs, by seeing how his statistics compared with the rest of the field. I look forward to diving deep into this data and exploring everything I can.
+
+## Visualization Plan
+
+As of right now, I plan on doing a presentation with static graphics. I definitely want to create a visualization that displays Jimmy's advanced statistics in last year's playoffs compared to other players, because I think they are underutilized metrics that can give me a lot of good information. I also will create other types of visualizations that show his performance against league averages.
+
+## Initial Data Issues
+
+In terms of loading the data in, I don't think I'm going to have huge trouble doing that. Stathead has a tool for converting the data into a file that I can load in. I imagine wrangling might take some time though, since there are variables I already know I'd like to remove and I might have to clean up some things in the data.

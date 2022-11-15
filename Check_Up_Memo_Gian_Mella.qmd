@@ -1,0 +1,89 @@
+---
+title: "Gian Mella Check Up Memo"
+subtitle: "Final Project (302)" 
+author: "Gian Mella"
+date: November 14, 2022
+format:
+  html:
+    toc: true
+    embed-resources: true
+    code-fold: true
+    link-external-newwindow: true
+    fig-dpi: 300
+execute:
+  warning: false
+from: markdown+emoji 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Data Source
+
+My primary data source is from Stathead: [https://stathead.com/tiny/hXqZ6](https://stathead.com/tiny/hXqZ6).
+
+This dataset lists every NBA player who played over 10 minutes per game in last year's playoffs (2021-22 NBA season), sorted by descending win shares. This table shows a wide variety of data for each player, such as per game stats, shooting percentages, and some advanced statistics as well. There are 152 players in the dataset.
+
+## Demonstration of Progress
+
+```{r}
+
+# loading packages
+
+library(tidyverse)
+library(janitor)
+library(skimr)
+
+bball_data <- read_csv("data/unprocessed/Bball_data.txt") %>%
+  clean_names()
+
+skim_without_charts(bball_data)
+```
+
+I was able to successfully load in the my dataset and perfomed a quick skim of the data. To my relief, missingness was very minimal and easy to explain. But I knew I had to fix a few things with my data before I could proceed into making visualizations. 
+
+First, I got rid of of columns in the dataset that I felt were unnecessary, such as the age of the player, what season it is (since it's the same for everyone), and some duplicate columns for minutes played and win shares. 
+
+```{r}
+bball_data <-
+  bball_data %>%
+  select(-c(rk, ws_10, season, mp_16, x9999, age))
+```
+
+
+I also needed to change a lot of my column names. There are many columns that wouldn't make sense when the average person is looking at my data, such as variables "g", "x3pa", or "x2p_percent". I renamed those columns along with some others for increased clarity.
+
+```{r}
+bball_data <- rename(bball_data, `win_shares` = `ws_3`, `mins` = `mp_4`, `games_played` = `g`, `games_started` = `gs`, `2p` = `x2p`, `2pa` = `x2pa`, `3p` = `x3p`, `3pa` = `x3pa`, `fouls` = `pf`, `2p_percent` = `x2p_percent`, `3p_percent` = `x3p_percent`, `efg_percent` = `e_fg_percent`, `position` = `pos`)
+```
+
+In addition, for all the shooting percentage variables, I noticed that they were in terms of decimals and not shooting percentages. For example a 51.3% mark from 3pt range is listed as ".513". I'd rather have it as a percentage, so I converted all of those shooting decimals to percentages by multiplying by 100. 
+
+```{r}
+bball_data1 <- bball_data %>%
+  mutate(
+  `fg_percent` = `fg_percent` * 100,
+  `2p_percent` = `2p_percent` * 100,
+  `3p_percent` = `3p_percent` * 100,
+  `ft_percent` = `ft_percent` * 100,
+  `ts_percent` = `ts_percent` * 100,
+  `efg_percent` = `efg_percent` * 100
+  )
+```
+
+Lastly, I'm going create a little visualization that gives me a glimpse into Jimmy Butler's overall playoff performance last year versus everyone else. The following chart shows Butler's points per game versus the league average.
+
+```{r}
+(jimmy_comparison <- bball_data1 %>%
+  mutate(player = ifelse(player == "Jimmy Butler", "Jimmy Butler", "All Other Players")) %>%
+  group_by(player) %>%
+  summarize(`Points Per Game (2021-22 Playoffs)` = mean(`pts`))
+)
+
+jimmy_comparison %>%
+  ggplot(aes(player, `Points Per Game (2021-22 Playoffs)`)) +
+  geom_col(fill = "light blue")
+```
+
+## Assessment of Progress
+
+I am pretty satisfied with the progress I have made so far. Loading the data was pretty simple, and I didn't run into any major problems  with my data that stalled my work. Every fix that I wanted to make with my dataset I was able to do. In the time that I've spent exploring and working with the data, I've already developed some ideas for visualizations I can possibly make. I think I am on track with this project and actually hope to start working on it earlier and potentially submit it by the early deadline.
