@@ -1,0 +1,4 @@
+- source: final_presentation.qmd
+  quarto-pub:
+    - id: a39d57ec-ebff-44ac-9d1f-060ff23d0d73
+      url: 'https://quartopub.com/sites/gianmella/data-visualization-final-project'

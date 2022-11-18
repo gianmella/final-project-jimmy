@@ -1,5 +1,7 @@
 ---
 title: "Data Visualization Final Project"
+title-slide-attributes:
+  data-background-color: mistyrose
 author: Gian Mella
 format:
   revealjs:
@@ -13,7 +15,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Topic Introduction
+## Topic Introduction {background-color="lightgray"}
 
 ::: panel-tabset
 
@@ -59,4 +61,22 @@ p6
 
 This visualization displays games played against win shares for the players in our dataset. Butler is highlighted on the graph. 
 
-## 
+## Additional Information {.scrollable .smaller}
+
+::: {.fragment .fade-in-then-out}
+
+For the first visualization, I wanted to communicate how advanced stats can give us an additional look into a player and show us things that the normal box scores might not be able to. I think it also highlights just how dominant Jimmy Butler was at every facet of the game in last year's playoffs, being in the top quartile in every metric.
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+The second visualization really illustrates the efficiency of Jimmy Butler as well. He bested the average of the rest of the top 10 PPG leaders in every shot percentage category. Butler isn't really known as a prolific scorer, but I think this graph shows his capabilities of being one when it matters most.
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+As we can see from the 3rd visualization, there is a general upward trend between games played and total win shares. Butler seems to have significantly higher win shares than everyone else, despite the fact that there are quite a few people who played more games than him. This plot showcases yet another display of Butler's impressiveness in last year's playoffs.
+
+:::
