@@ -1,0 +1,62 @@
+---
+title: "Data Visualization Final Project"
+author: Gian Mella
+format:
+  revealjs:
+    transition: fade
+    transition-speed: default
+    embed-resources: true
+editor: visual
+slide-number: true
+from: markdown+emoji 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Topic Introduction
+
+::: panel-tabset
+
+### Data Topic
+
+In this project, I used NBA data to create my visualizations. The dataset I pulled from lists every NBA player who played over 10 minutes per game in last year's playoffs (2021-22 NBA season). This table shows a wide variety of data for each player, such as per game stats, shooting percentages, and some advanced statistics as well. There are 152 players in the dataset.
+
+### Why This Data?
+
+I chose this data mostly because I'm a big fan of basketball and also of Jimmy Butler. Butler had a great playoff run last year, and as a fan of his I wanted to use visualizations to see just how good he was last year. I compared his statistics to both the general field and also against the top players from last year's playoffs.
+
+### Data Citation
+
+My data comes from Stathead: <https://stathead.com/tiny/hXqZ6>.
+
+:::
+
+## Visualization 1 {.scrollable .smaller background-color="lavender"}
+
+![](images/jimmy_circle.png){width="600" height="700"}
+
+For arguably the 4 best players from last year's playoffs, this visualization illustrates each player's quartile rank in 5 different advanced metrics.
+
+## Visualization 2 {.scrollable .smaller background-color="lightyellow"}
+
+```{r}
+library(tidyverse)
+
+load(file = "data/processed/jimmy_shot.rda")
+
+p5
+```
+
+Here we have a comparison between Jimmy Butler and the other 9 top PPG scorers from last year's playoffs. For 6 different types of shot percentages, this plot shows his percentage in each one vs. what the average of the rest of the top 10 was.
+
+## Visualization 3 {.scrollable .smaller background-color="turquoise"}
+
+```{r}
+load(file = "data/processed/jimmy_ws.rda")
+
+p6
+```
+
+This visualization displays games played against win shares for the players in our dataset. Butler is highlighted on the graph. 
+
+## 
